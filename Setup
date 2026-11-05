@@ -1,0 +1,194 @@
+## LangChain Setup
+
+### 1. Create a new folder
+
+Create a new folder for your LangChain project.
+
+For example:
+
+```text
+langchain-project
+```
+
+**Why?**  
+This keeps all the files related to your project organized in one place.
+
+---
+
+### 2. Open it in VS Code
+
+Open the newly created folder in **VS Code**.
+
+You can do:
+
+```text
+VS Code → File → Open Folder → select your project folder
+```
+
+**Why?**  
+VS Code will become your development environment where you'll write and run your Python/LangChain code.
+
+---
+
+### 3. Create a new virtual environment
+
+Run:
+
+```bash
+python -m venv venv
+```
+
+Here:
+
+- `python` → uses Python
+- `-m venv` → tells Python to create a virtual environment
+- `venv` → name of the virtual environment
+
+It will create something like:
+
+```text
+langchain-project/
+│
+├── venv/
+```
+
+**Why?**  
+A virtual environment creates an **isolated Python environment for this project**.
+
+For example, suppose one project needs:
+
+```text
+langchain = version A
+```
+
+and another project needs:
+
+```text
+langchain = version B
+```
+
+Virtual environments prevent their packages from interfering with each other.
+
+---
+
+### 4. Activate the virtual environment
+
+On Windows, run:
+
+```bash
+venv\Scripts\Activate
+```
+
+After activation, you will usually see something like:
+
+```text
+(venv) C:\Users\...\langchain-project>
+```
+
+The `(venv)` indicates that your virtual environment is currently active.
+
+**Why?**  
+From this point onward, when you install packages using `pip`, they will be installed **inside this project's virtual environment**, rather than globally.
+
+---
+
+### 5. Create `requirements.txt`
+
+Create a file:
+
+```text
+requirements.txt
+```
+
+This file contains the Python packages your project requires.
+
+For example:
+
+```text
+langchain
+langchain-openai
+```
+
+The exact packages will depend on what you're building.
+
+**Why?**  
+It acts as a list of dependencies for your project.
+
+Someone else can take your project and install all the required packages from this file instead of manually installing each package.
+
+---
+
+### 6. Install packages from `requirements.txt`
+
+Run:
+
+```bash
+pip install -r requirements.txt
+```
+
+Here:
+
+- `pip install` → installs Python packages
+- `-r` → tells pip to read a requirements file
+- `requirements.txt` → the file containing the package names
+
+So pip reads the file and installs everything listed inside it.
+
+For example:
+
+```text
+requirements.txt
+       ↓
+   langchain
+   langchain-openai
+       ↓
+     pip
+       ↓
+Packages installed in venv
+```
+
+---
+
+### 7. Verify LangChain installation
+
+Finally, verify that LangChain was installed correctly.
+
+You can check it using Python, for example:
+
+```python
+import langchain
+
+print(langchain.__version__)
+```
+
+If this runs without an import error, LangChain is installed and accessible in your current environment.
+
+---
+
+## Complete flow
+
+So the overall setup is:
+
+```text
+1. Create project folder
+        ↓
+2. Open folder in VS Code
+        ↓
+3. Create virtual environment
+        ↓
+   python -m venv venv
+        ↓
+4. Activate virtual environment
+        ↓
+   venv\Scripts\Activate
+        ↓
+5. Create requirements.txt
+        ↓
+6. Install dependencies
+        ↓
+   pip install -r requirements.txt
+        ↓
+7. Verify LangChain installation
+```
+
+**One important thing to remember:** whenever you work on this project, make sure the `(venv)` environment is activated before installing packages or running the project.
